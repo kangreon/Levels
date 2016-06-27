@@ -41,7 +41,7 @@ minecraft {
 
 dependencies {
     compile files (
-    "libs/xLib-1.9.4-r1.0.1.jar"
+    "libs/xLib-1.10-r2.0.0.jar"
     )
 }
 
