@@ -17,6 +17,10 @@ import static com.thexfactor117.levels.leveling.Ability.STRENGTH;
 import static com.thexfactor117.levels.leveling.Ability.TOXIC;
 import static com.thexfactor117.levels.leveling.Ability.VOID;
 import static com.thexfactor117.levels.leveling.Ability.VOID_ARMOR;
+import static com.thexfactor117.levels.leveling.Ability.ABSORB;
+import static com.thexfactor117.levels.leveling.Ability.BEASTIAL;
+import static com.thexfactor117.levels.leveling.Ability.INVISIBILITY;
+import static com.thexfactor117.levels.leveling.Ability.CHAINED;
 
 import java.util.Random;
 
@@ -31,8 +35,8 @@ import com.thexfactor117.xlib.misc.RandomCollection;
  */
 public enum AbilityHelper 
 {
-	WEAPON(FIRE, FROST, POISON, STRENGTH, ELEMENTAL, DARKNESS, LIGHT, BLOODLUST, ETHEREAL, STING, VOID),
-	ARMOR(MOLTEN, FROZEN, TOXIC, ENLIGHTENED, HARDENED, VOID_ARMOR);
+	WEAPON(FIRE, FROST, POISON, STRENGTH, ELEMENTAL, DARKNESS, LIGHT, BLOODLUST, ETHEREAL, STING, VOID, CHAINED),
+	ARMOR(MOLTEN, FROZEN, TOXIC, ENLIGHTENED, HARDENED, VOID_ARMOR, ABSORB, BEASTIAL, INVISIBILITY);
 	
 	@SuppressWarnings("unchecked")
 	private final RandomCollection<Ability>[] abilityCollections = new RandomCollection[5];
