@@ -72,6 +72,20 @@ public enum Ability
 	{
 		nbt.removeTag(toString());
 	}
+	
+	public static void setAbility(NBTTagCompound nbt, String abilityName)
+	{
+		String ability = abilityName.toUpperCase();
+		nbt.setBoolean(ability, true);
+	}
+	
+	public static void setAbilities(NBTTagCompound nbt, Ability... abilities)
+	{
+		for (Ability ability : abilities)
+		{
+			nbt.setBoolean(ability.toString(), true);
+		}
+	}
 
 	public String getColor()
 	{

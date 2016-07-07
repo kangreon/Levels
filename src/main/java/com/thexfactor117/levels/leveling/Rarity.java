@@ -60,6 +60,12 @@ public enum Rarity
 			nbt.setInteger("RARITY", ordinal());
 		}
 	}
+	
+	public static void setRarity(NBTTagCompound nbt, String rarityName)
+	{
+		int rarity = Integer.parseInt(rarityName);
+		nbt.setInteger("RARITY", rarity);
+	}
 
 	public String getColor()
 	{
