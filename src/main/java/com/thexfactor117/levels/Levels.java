@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.thexfactor117.levels.handlers.ConfigHandler;
+import com.thexfactor117.levels.init.ModCommands;
 import com.thexfactor117.levels.init.ModEvents;
 import com.thexfactor117.levels.network.PacketRarity;
 import com.thexfactor117.levels.network.PacketRarity.Handler;
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -59,4 +61,10 @@ public class Levels
 	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {}
+	
+	@EventHandler
+	public void onServerLoad(FMLServerStartingEvent event)
+	{
+		ModCommands.registerCommands(event);
+	}
 }

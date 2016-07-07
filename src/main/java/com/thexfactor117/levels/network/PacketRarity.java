@@ -1,7 +1,5 @@
 package com.thexfactor117.levels.network;
 
-import com.thexfactor117.levels.Levels;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
@@ -48,10 +46,7 @@ public class PacketRarity implements IMessage
 			mainThread.addScheduledTask(new Runnable()
 			{
 				@Override
-				public void run()
-				{
-					Levels.LOGGER.info("Packet..." + message.nbt);
-				}
+				public void run() {}
 			});
 			
 			return null;

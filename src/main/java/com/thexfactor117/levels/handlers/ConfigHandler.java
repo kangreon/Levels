@@ -17,6 +17,7 @@ public class ConfigHandler
 	public static boolean LEVELING_SYSTEM;
 	public static boolean DURABILITY;
 	public static boolean MOB_DROPS;
+	public static boolean COMMANDS;
 
 	// experience
 	public static int MAX_LEVEL_CAP;
@@ -79,6 +80,7 @@ public class ConfigHandler
 		LEVELING_SYSTEM = CONFIG.getBoolean("levelingSystem", category, true, "Enable/disable the entire leveling systems.");
 		DURABILITY = CONFIG.getBoolean("durability", category, false, "Enable/disable durability. By default all weapons, armors, and bows do NOT lose durability.");
 		MOB_DROPS = CONFIG.getBoolean("mobDrops", category, true, "Enable/disable customized mob droppings. This will add vanilla weapons to mob drops.");
+		COMMANDS = CONFIG.getBoolean("commands", category, false, "Enable/disable commands used to force rarities, abilities, levels, and experience.");
 		
 		// experience
 		category = "Experience";
