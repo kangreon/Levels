@@ -119,7 +119,7 @@ public class ConfigHandler
 		ETHEREAL_PERCENTAGE = CONFIG.getInt("etherealPercentageChance", category, 10, 1, 100, "The percentage chance at using the Ethereal ability. Divide 1 by the number here to retrieve the actual percentage. (e.g. 1/10 = 10%)");
 		CHAINED_PERCENTAGE = CONFIG.getInt("chainedPercentageChance", category, 10, 1, 100, "The percentage chance at using the Chained ability. Divide 1 by the number here to retrieve the actual percentage. (e.g. 1/10 = 10%)");
 		CHAINED_RADIUS = CONFIG.getInt("chainedRadius", category, 10, 1, 50, "The radius (in blocks) around the player in which enemies will be affected by the Chained ability.");
-		VOID_PERCENTAGE = CONFIG.getInt("voidPercentageChance", category, 20, 1, 100, "The percentage chance at using the Void ability. Divide 1 by the number here to retrieve the actual percentage. (e.g. 1/10 = 10%)");
+		VOID_PERCENTAGE = CONFIG.getInt("voidPercentageChance", category, 50, 1, 100, "The percentage chance at using the Void ability. Divide 1 by the number here to retrieve the actual percentage. (e.g. 1/10 = 10%)");
 		BASIC_ARMOR_PERCENTAGE = CONFIG.getInt("basicPercentageChance", category, 5, 1, 100, "The percentage chance at using the Molten, Frozen, or Toxic abilities on Armors. Divide 1 by the number here to retrieve the actual percentage. (e.g. 1/10 = 10%)");
 		BEASTIAL_MIN_HEALTH = CONFIG.getFloat("beastialMinimumHealthRequired", category, 4F, 1F, 20F, "Minimum amount of health needed to enabled the Beastial ability.");
 		BEASTIAL_TIME = CONFIG.getInt("beastialTime", category, 1, 0, 60, "The amount of seconds of Strength will be applied once Beastial has been activated (really just changes how many seconds after Beastial has gone away the buff will remain).");

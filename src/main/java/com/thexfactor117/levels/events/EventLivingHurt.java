@@ -23,6 +23,7 @@ import net.minecraft.launchwrapper.Launch;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
@@ -270,7 +271,7 @@ public class EventLivingHurt
 								}
 							}
 							
-							if (Ability.VOID.hasAbility(nbt) && rand.nextInt(ConfigHandler.VOID_PERCENTAGE) == 0) enemy.setHealth(0);
+							if (Ability.VOID.hasAbility(nbt) && rand.nextInt(ConfigHandler.VOID_PERCENTAGE) == 0) enemy.attackEntityFrom(DamageSource.causePlayerDamage(player), 10000);
 						}
 						
 						/*
