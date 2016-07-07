@@ -1,6 +1,9 @@
 package com.thexfactor117.levels.leveling;
 
+import static com.thexfactor117.levels.leveling.Ability.ABSORB;
+import static com.thexfactor117.levels.leveling.Ability.BEASTIAL;
 import static com.thexfactor117.levels.leveling.Ability.BLOODLUST;
+import static com.thexfactor117.levels.leveling.Ability.CHAINED;
 import static com.thexfactor117.levels.leveling.Ability.DARKNESS;
 import static com.thexfactor117.levels.leveling.Ability.ELEMENTAL;
 import static com.thexfactor117.levels.leveling.Ability.ENLIGHTENED;
@@ -9,6 +12,7 @@ import static com.thexfactor117.levels.leveling.Ability.FIRE;
 import static com.thexfactor117.levels.leveling.Ability.FROST;
 import static com.thexfactor117.levels.leveling.Ability.FROZEN;
 import static com.thexfactor117.levels.leveling.Ability.HARDENED;
+import static com.thexfactor117.levels.leveling.Ability.INVISIBILITY;
 import static com.thexfactor117.levels.leveling.Ability.LIGHT;
 import static com.thexfactor117.levels.leveling.Ability.MOLTEN;
 import static com.thexfactor117.levels.leveling.Ability.POISON;
@@ -17,10 +21,6 @@ import static com.thexfactor117.levels.leveling.Ability.STRENGTH;
 import static com.thexfactor117.levels.leveling.Ability.TOXIC;
 import static com.thexfactor117.levels.leveling.Ability.VOID;
 import static com.thexfactor117.levels.leveling.Ability.VOID_ARMOR;
-import static com.thexfactor117.levels.leveling.Ability.CHAINED;
-import static com.thexfactor117.levels.leveling.Ability.BEASTIAL;
-import static com.thexfactor117.levels.leveling.Ability.ABSORB;
-import static com.thexfactor117.levels.leveling.Ability.INVISIBILITY;
 
 import java.util.Random;
 

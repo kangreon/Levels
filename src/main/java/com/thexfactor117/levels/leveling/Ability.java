@@ -72,7 +72,7 @@ public enum Ability
 	{
 		nbt.removeTag(toString());
 	}
-		
+
 	public static void setAbility(NBTTagCompound nbt, String abilityName)
 	{
 		String ability = abilityName.toUpperCase();
