@@ -1,6 +1,7 @@
 package com.thexfactor117.levels.init;
 
 import com.thexfactor117.levels.Levels;
+import com.thexfactor117.levels.events.EventEntityJoinWorld;
 import com.thexfactor117.levels.events.EventItemTooltip;
 import com.thexfactor117.levels.events.EventLivingDeath;
 import com.thexfactor117.levels.events.EventLivingDrops;
@@ -28,6 +29,7 @@ public class ModEvents
 			MinecraftForge.EVENT_BUS.register(new EventItemTooltip());
 			MinecraftForge.EVENT_BUS.register(new EventLivingDeath());
 			MinecraftForge.EVENT_BUS.register(new EventLivingUpdate());
+			MinecraftForge.EVENT_BUS.register(new EventEntityJoinWorld());
 		}
 		
 		if (ConfigHandler.MOB_DROPS)

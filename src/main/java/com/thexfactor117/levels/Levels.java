@@ -5,6 +5,7 @@ import java.io.File;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.thexfactor117.levels.capabilities.CapabilityEnemyLevel;
 import com.thexfactor117.levels.handlers.ConfigHandler;
 import com.thexfactor117.levels.init.ModCommands;
 import com.thexfactor117.levels.init.ModEvents;
@@ -49,6 +50,7 @@ public class Levels
 		ConfigHandler.init(new File(CONFIG_DIR.getPath(), Reference.MODID + ".cfg"));
 		
 		ModEvents.registerEvents();
+		CapabilityEnemyLevel.register();
 		
 		NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel("rarities");
 		NETWORK.registerMessage(Handler.class, PacketRarity.class, 0, Side.CLIENT);
