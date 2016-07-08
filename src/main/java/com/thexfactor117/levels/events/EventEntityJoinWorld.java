@@ -7,7 +7,7 @@ import com.thexfactor117.levels.leveling.EnemyLevel;
 import com.thexfactor117.levels.network.PacketEnemyLevel;
 
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /**
@@ -18,20 +18,24 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class EventEntityJoinWorld 
 {
 	@SubscribeEvent
-	public void onEntityJoinWorld(EntityJoinWorldEvent event)
+	public void onEntityJoinWorld(PlayerEvent.StartTracking event)
 	{
-		if (event.getEntity() instanceof EntityMob)
-		{
-			if (!event.getEntity().worldObj.isRemote)
+		if (event.getTarget() instanceof EntityMob)
+		{			
+			if (!event.getTarget().worldObj.isRemote)
 			{
-				EntityMob mob = (EntityMob) event.getEntity();
-				IEnemyLevel enemyLevel = mob.getCapability(CapabilityEnemyLevel.ENEMY_LEVEL_CAP, null);
+				EntityMob mob = (EntityMob) event.getTarget();
 				
-				if (enemyLevel != null)
+				if (mob != null)
 				{
-					int level = EnemyLevel.getRandomLevel(event.getEntity().worldObj.rand).ordinal();
-					enemyLevel.setEnemyLevel(level);
-					Levels.NETWORK.sendToAll(new PacketEnemyLevel(enemyLevel.getEnemyLevel()));
+					IEnemyLevel enemyLevel = mob.getCapability(CapabilityEnemyLevel.ENEMY_LEVEL_CAP, null);
+					
+					if (enemyLevel != null)
+					{
+						int level = EnemyLevel.getRandomLevel(event.getEntity().worldObj.rand).ordinal();
+						enemyLevel.setEnemyLevel(level);
+						Levels.NETWORK.sendToAll(new PacketEnemyLevel(enemyLevel.getEnemyLevel(), mob.getEntityId()));
+					}
 				}
 			}
 		}
