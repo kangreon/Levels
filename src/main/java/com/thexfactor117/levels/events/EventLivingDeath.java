@@ -5,7 +5,7 @@ import java.util.Random;
 import com.thexfactor117.levels.handlers.ConfigHandler;
 import com.thexfactor117.levels.leveling.AbilityHelper;
 import com.thexfactor117.levels.leveling.Experience;
-import com.thexfactor117.xlib.misc.NBTHelper;
+import com.thexfactor117.levels.misc.NBTHelper;
 
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;

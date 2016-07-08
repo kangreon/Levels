@@ -5,7 +5,7 @@ import java.util.Random;
 import com.thexfactor117.levels.Levels;
 import com.thexfactor117.levels.leveling.Rarity;
 import com.thexfactor117.levels.network.PacketRarity;
-import com.thexfactor117.xlib.misc.NBTHelper;
+import com.thexfactor117.levels.misc.NBTHelper;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;

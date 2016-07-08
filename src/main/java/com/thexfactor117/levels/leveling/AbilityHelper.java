@@ -25,7 +25,7 @@ import static com.thexfactor117.levels.leveling.Ability.VOID_ARMOR;
 import java.util.Random;
 
 import com.thexfactor117.levels.Levels;
-import com.thexfactor117.xlib.misc.RandomCollection;
+import com.thexfactor117.levels.misc.RandomCollection;
 
 /**
  * 

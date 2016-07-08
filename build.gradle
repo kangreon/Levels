@@ -11,6 +11,8 @@ buildscript {
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 loadProperties()
 
@@ -37,12 +39,6 @@ minecraft {
     
     replace "@VERSION@", config.mod_version + "." + config.build_number
     replace "@MVERSION@", version
-}
-
-dependencies {
-    compile files (
-    "libs/xLib-1.10-r2.0.1.jar"
-    )
 }
 
 processResources

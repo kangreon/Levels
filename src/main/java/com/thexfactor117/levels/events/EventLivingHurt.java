@@ -10,7 +10,7 @@ import com.thexfactor117.levels.leveling.Ability;
 import com.thexfactor117.levels.leveling.AbilityHelper;
 import com.thexfactor117.levels.leveling.Experience;
 import com.thexfactor117.levels.leveling.Rarity;
-import com.thexfactor117.xlib.misc.NBTHelper;
+import com.thexfactor117.levels.misc.NBTHelper;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

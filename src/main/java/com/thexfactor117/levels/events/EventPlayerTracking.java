@@ -7,7 +7,7 @@ import com.thexfactor117.levels.capabilities.CapabilityEnemyLevel;
 import com.thexfactor117.levels.capabilities.IEnemyLevel;
 import com.thexfactor117.levels.leveling.EnemyLevel;
 import com.thexfactor117.levels.network.PacketEnemyLevel;
-import com.thexfactor117.xlib.misc.EnumAttributeModifierOperations;
+import com.thexfactor117.levels.misc.EnumAttributeModifierOperations;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;

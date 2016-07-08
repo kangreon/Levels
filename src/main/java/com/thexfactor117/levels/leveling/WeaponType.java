@@ -2,7 +2,7 @@ package com.thexfactor117.levels.leveling;
 
 import java.util.Random;
 
-import com.thexfactor117.xlib.misc.RandomCollection;
+import com.thexfactor117.levels.misc.RandomCollection;
 
 /**
  * 
