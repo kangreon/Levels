@@ -19,7 +19,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 /**
  * 
  * @author TheXFactor117
- * @author AtomicStryker
  *
  */
 public class EventRenderOverlay 
@@ -58,6 +57,9 @@ public class EventRenderOverlay
 		}
 	}
 	
+	/**
+	 * @author AtomicStryker
+	 */
 	private Entity getEntityCrosshairOver(float renderTick, Minecraft mc)
     {
         Entity returnedEntity = null;
