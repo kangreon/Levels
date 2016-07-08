@@ -7,6 +7,7 @@ import com.thexfactor117.levels.events.EventLivingDeath;
 import com.thexfactor117.levels.events.EventLivingDrops;
 import com.thexfactor117.levels.events.EventLivingHurt;
 import com.thexfactor117.levels.events.EventLivingUpdate;
+import com.thexfactor117.levels.events.EventRenderOverlay;
 import com.thexfactor117.levels.handlers.ConfigHandler;
 
 import net.minecraftforge.common.MinecraftForge;
@@ -30,6 +31,7 @@ public class ModEvents
 			MinecraftForge.EVENT_BUS.register(new EventLivingDeath());
 			MinecraftForge.EVENT_BUS.register(new EventLivingUpdate());
 			MinecraftForge.EVENT_BUS.register(new EventEntityJoinWorld());
+			MinecraftForge.EVENT_BUS.register(new EventRenderOverlay());
 		}
 		
 		if (ConfigHandler.MOB_DROPS)

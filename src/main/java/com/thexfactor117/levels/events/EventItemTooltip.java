@@ -84,6 +84,8 @@ public class EventItemTooltip
 						}
 					}
 					else event.getToolTip().add(TextFormatting.ITALIC + "Abilities (Shift)");
+					
+					event.getToolTip().add("");
 				}
 			}
 		}

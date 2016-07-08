@@ -71,10 +71,13 @@ public class CapabilityEnemyLevel
 		{
 			if (event.getEntity() instanceof EntityMob) 
 			{
-				final EnemyLevel level = new EnemyLevel((EntityMob) event.getEntity());
-				int enemyLevel = com.thexfactor117.levels.leveling.EnemyLevel.getRandomLevel(event.getEntity().worldObj.rand).ordinal();
-				level.setEnemyLevel(enemyLevel);
-				event.addCapability(ID, createProvider(level));
+				final EnemyLevel enemyLevel = new EnemyLevel((EntityMob) event.getEntity());
+				
+				//int level = com.thexfactor117.levels.leveling.EnemyLevel.getRandomLevel(event.getEntity().worldObj.rand).ordinal();
+				//enemyLevel.setEnemyLevel(level);
+				//Levels.NETWORK.sendToAll(new PacketEnemyLevel(enemyLevel.getEnemyLevel()));
+				
+				event.addCapability(ID, createProvider(enemyLevel));
 			}
 		}
 	}

@@ -9,8 +9,8 @@ import com.thexfactor117.levels.capabilities.CapabilityEnemyLevel;
 import com.thexfactor117.levels.handlers.ConfigHandler;
 import com.thexfactor117.levels.init.ModCommands;
 import com.thexfactor117.levels.init.ModEvents;
+import com.thexfactor117.levels.network.PacketEnemyLevel;
 import com.thexfactor117.levels.network.PacketRarity;
-import com.thexfactor117.levels.network.PacketRarity.Handler;
 import com.thexfactor117.levels.proxies.CommonProxy;
 
 import net.minecraftforge.fml.common.Mod;
@@ -53,7 +53,8 @@ public class Levels
 		CapabilityEnemyLevel.register();
 		
 		NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel("rarities");
-		NETWORK.registerMessage(Handler.class, PacketRarity.class, 0, Side.CLIENT);
+		NETWORK.registerMessage(PacketRarity.Handler.class, PacketRarity.class, 0, Side.CLIENT);
+		NETWORK.registerMessage(PacketEnemyLevel.Handler.class, PacketEnemyLevel.class, 1, Side.CLIENT);
 		
 		Levels.LOGGER.info("Configurations and core events have been loaded...");
 	}
