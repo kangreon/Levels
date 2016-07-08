@@ -1,6 +1,5 @@
 package com.thexfactor117.levels.network;
 
-import com.thexfactor117.levels.Levels;
 import com.thexfactor117.levels.capabilities.CapabilityEnemyLevel;
 import com.thexfactor117.levels.capabilities.IEnemyLevel;
 
@@ -60,7 +59,6 @@ public class PacketEnemyLevel implements IMessage
 					
 					if (entity instanceof EntityMob)
 					{
-						Levels.LOGGER.info("Level from Packet: " + message.level);
 						final IEnemyLevel enemyLevel = CapabilityEnemyLevel.getEnemyLevel((EntityMob) entity);
 						enemyLevel.setEnemyLevel(message.level);
 					}

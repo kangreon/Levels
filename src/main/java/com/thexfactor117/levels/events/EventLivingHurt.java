@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Random;
 
 import com.thexfactor117.levels.Levels;
-import com.thexfactor117.levels.capabilities.CapabilityEnemyLevel;
-import com.thexfactor117.levels.capabilities.IEnemyLevel;
 import com.thexfactor117.levels.handlers.ConfigHandler;
 import com.thexfactor117.levels.leveling.Ability;
 import com.thexfactor117.levels.leveling.AbilityHelper;
@@ -16,7 +14,6 @@ import com.thexfactor117.xlib.misc.NBTHelper;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemArmor;
@@ -50,6 +47,17 @@ public class EventLivingHurt
 	public void hitEntity(LivingHurtEvent event)
 	{
 		/*
+		 * ATTRIBUTE TESTING
+		 */
+		if (event.getSource().getSourceOfDamage() instanceof EntityPlayer)
+		{
+			Levels.LOGGER.info("Entity health: " + event.getEntityLiving().getHealth() + "/" + event.getEntityLiving().getMaxHealth());
+		}
+		/*
+		 * ATTRIBUTE TESTING
+		 */
+		
+		/*
 		 * 
 		 * WEAPONS
 		 *
@@ -71,32 +79,7 @@ public class EventLivingHurt
 					NBTTagCompound nbt = NBTHelper.loadStackNBT(stack);
 					
 					if (nbt != null)
-					{
-						/*
-						 * 
-						 * CAPABILITIES TESTING
-						 * 
-						 */
-						
-						if (enemy instanceof EntityMob)
-						{
-							EntityMob mob = (EntityMob) enemy;
-							IEnemyLevel enemyLevel = mob.getCapability(CapabilityEnemyLevel.ENEMY_LEVEL_CAP, null);
-							
-							if (enemyLevel.getEnemyLevel() == 1) Levels.LOGGER.info("Enemy Level Weakened!");
-							if (enemyLevel.getEnemyLevel() == 2) Levels.LOGGER.info("Enemy Level Normal!");
-							if (enemyLevel.getEnemyLevel() == 3) Levels.LOGGER.info("Enemy Level Hardened!");
-							if (enemyLevel.getEnemyLevel() == 4) Levels.LOGGER.info("Enemy Level Superior!");
-							if (enemyLevel.getEnemyLevel() == 5) Levels.LOGGER.info("Enemy Level Elite!");
-							if (enemyLevel.getEnemyLevel() == 6) Levels.LOGGER.info("Enemy Level Legendary!");
-						}
-						
-						/*
-						 * 
-						 * CAPABILITIES TESTING
-						 * 
-						 */
-						
+					{	
 						int level = Experience.getLevel(nbt);
 						int experience = Experience.getExperience(nbt);
 

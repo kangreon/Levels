@@ -2,6 +2,7 @@ package com.thexfactor117.levels.events;
 
 import com.thexfactor117.levels.capabilities.CapabilityEnemyLevel;
 import com.thexfactor117.levels.capabilities.IEnemyLevel;
+import com.thexfactor117.levels.handlers.ConfigHandler;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -48,9 +49,15 @@ public class EventRenderOverlay
 					if (enemyLevel.getEnemyLevel() == 6) buffer = TextFormatting.GOLD + "Legendary";
 					ScaledResolution resolution = new ScaledResolution(FMLClientHandler.instance().getClient());
 	                int screenwidth = resolution.getScaledWidth();
+	                int screenheight = resolution.getScaledHeight();
 	                FontRenderer fontR = FMLClientHandler.instance().getClient().fontRendererObj;
 	                
-	                fontR.drawString(buffer, screenwidth / 2 - buffer.length() * 2, 10, 0xffffff);
+	                if (ConfigHandler.STRING_POSITION.equals("default")) fontR.drawString(buffer, screenwidth / 2 - fontR.getStringWidth(buffer) / 2, 10, 0xffffff);
+	                if (ConfigHandler.STRING_POSITION.equals("topright")) fontR.drawString(buffer, screenwidth - 10 - fontR.getStringWidth(buffer), 10, 0xffffff);
+	                if (ConfigHandler.STRING_POSITION.equals("topleft")) fontR.drawString(buffer, 10, 10, 0xffffff);
+	                if (ConfigHandler.STRING_POSITION.equals("bottomright")) fontR.drawString(buffer, screenwidth - 10 - fontR.getStringWidth(buffer), screenheight - 20, 0xffffff);
+	                if (ConfigHandler.STRING_POSITION.equals("bottomleft")) fontR.drawString(buffer, 10, screenheight - 20, 0xffffff);
+	                if (ConfigHandler.STRING_POSITION.equals("cursor")) fontR.drawString(buffer, screenwidth / 2 - fontR.getStringWidth(buffer) / 2, screenheight / 2 - 15, 0xffffff);
 				}
 			}
 		}

@@ -2,7 +2,6 @@ package com.thexfactor117.levels.capabilities;
 
 import javax.annotation.Nullable;
 
-import com.thexfactor117.levels.Levels;
 import com.thexfactor117.levels.Reference;
 import com.thexfactor117.levels.misc.CapabilityUtils;
 
@@ -39,7 +38,6 @@ public class CapabilityEnemyLevel
 			@Override
 			public NBTBase writeNBT(Capability<IEnemyLevel> capability, IEnemyLevel instance, EnumFacing side) 
 			{
-				Levels.LOGGER.info("Level: " + instance.getEnemyLevel());
 				return new NBTTagInt(instance.getEnemyLevel());
 			}
 
@@ -72,11 +70,6 @@ public class CapabilityEnemyLevel
 			if (event.getEntity() instanceof EntityMob) 
 			{
 				final EnemyLevel enemyLevel = new EnemyLevel((EntityMob) event.getEntity());
-				
-				//int level = com.thexfactor117.levels.leveling.EnemyLevel.getRandomLevel(event.getEntity().worldObj.rand).ordinal();
-				//enemyLevel.setEnemyLevel(level);
-				//Levels.NETWORK.sendToAll(new PacketEnemyLevel(enemyLevel.getEnemyLevel()));
-				
 				event.addCapability(ID, createProvider(enemyLevel));
 			}
 		}

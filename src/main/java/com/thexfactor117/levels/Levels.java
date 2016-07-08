@@ -52,7 +52,7 @@ public class Levels
 		ModEvents.registerEvents();
 		CapabilityEnemyLevel.register();
 		
-		NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel("rarities");
+		NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel("levels");
 		NETWORK.registerMessage(PacketRarity.Handler.class, PacketRarity.class, 0, Side.CLIENT);
 		NETWORK.registerMessage(PacketEnemyLevel.Handler.class, PacketEnemyLevel.class, 1, Side.CLIENT);
 		

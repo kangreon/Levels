@@ -18,6 +18,10 @@ public class ConfigHandler
 	public static boolean DURABILITY;
 	public static boolean MOB_DROPS;
 	public static boolean COMMANDS;
+	public static boolean ENEMY_LEVELING;
+	
+	// enemy leveling
+	public static String STRING_POSITION;
 
 	// experience
 	public static int MAX_LEVEL_CAP;
@@ -81,6 +85,12 @@ public class ConfigHandler
 		DURABILITY = CONFIG.getBoolean("durability", category, false, "Enable/disable durability. By default all weapons, armors, and bows do NOT lose durability.");
 		MOB_DROPS = CONFIG.getBoolean("mobDrops", category, true, "Enable/disable customized mob droppings. This will add vanilla weapons to mob drops.");
 		COMMANDS = CONFIG.getBoolean("commands", category, false, "Enable/disable commands used to force rarities, abilities, levels, and experience.");
+		ENEMY_LEVELING = CONFIG.getBoolean("enemyLeveling", category, true, "Enable/disable the enemy leveling system. This will give enemies rarities as well.");
+		
+		// enemy leveling
+		category = "Enemy Leveling";
+		CONFIG.addCustomCategoryComment(category, "Enemy leveling settings");
+		STRING_POSITION = CONFIG.getString("stringPosition", category, "default", "Sets the enemy rarity positioning on the screen. Use default, topright, topleft, bottomleft, bottomright, or cursor.");
 		
 		// experience
 		category = "Experience";
