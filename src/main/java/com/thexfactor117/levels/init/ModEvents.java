@@ -30,6 +30,10 @@ public class ModEvents
 			MinecraftForge.EVENT_BUS.register(new EventItemTooltip());
 			MinecraftForge.EVENT_BUS.register(new EventLivingDeath());
 			MinecraftForge.EVENT_BUS.register(new EventLivingUpdate());
+		}
+		
+		if (ConfigHandler.ENEMY_LEVELING)
+		{
 			MinecraftForge.EVENT_BUS.register(new EventPlayerTracking());
 			MinecraftForge.EVENT_BUS.register(new EventRenderOverlay());
 		}

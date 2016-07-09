@@ -1,5 +1,6 @@
 package com.thexfactor117.levels.events;
 
+import com.thexfactor117.levels.Levels;
 import com.thexfactor117.levels.capabilities.CapabilityEnemyLevel;
 import com.thexfactor117.levels.capabilities.IEnemyLevel;
 import com.thexfactor117.levels.handlers.ConfigHandler;
@@ -29,35 +30,38 @@ public class EventRenderOverlay
 	@SubscribeEvent
 	public void onRenderOverlay(RenderGameOverlayEvent.Text event)
 	{
-		Entity entity = getEntityCrosshairOver(event.getPartialTicks(), FMLClientHandler.instance().getClient());
-		
-		if (entity != null && entity instanceof EntityMob)
+		if (!Levels.isWailaLoaded)
 		{
-			if (entity.worldObj.isRemote)
+			Entity entity = getEntityCrosshairOver(event.getPartialTicks(), FMLClientHandler.instance().getClient());
+			
+			if (entity != null && entity instanceof EntityMob)
 			{
-				EntityMob mob = (EntityMob) entity;
-				
-				if (mob.hasCapability(CapabilityEnemyLevel.ENEMY_LEVEL_CAP, null))
+				if (entity.worldObj.isRemote)
 				{
-					IEnemyLevel enemyLevel = mob.getCapability(CapabilityEnemyLevel.ENEMY_LEVEL_CAP, null);
-					String buffer = "Default";
-					if (enemyLevel.getEnemyLevel() == 1) buffer = TextFormatting.DARK_GRAY + "Weakened";
-					if (enemyLevel.getEnemyLevel() == 2) buffer = TextFormatting.WHITE + "Normal";
-					if (enemyLevel.getEnemyLevel() == 3) buffer = TextFormatting.DARK_GREEN + "Hardened";
-					if (enemyLevel.getEnemyLevel() == 4) buffer = TextFormatting.AQUA + "Superior";
-					if (enemyLevel.getEnemyLevel() == 5) buffer = TextFormatting.DARK_PURPLE + "Elite";
-					if (enemyLevel.getEnemyLevel() == 6) buffer = TextFormatting.GOLD + "Legendary";
-					ScaledResolution resolution = new ScaledResolution(FMLClientHandler.instance().getClient());
-	                int screenwidth = resolution.getScaledWidth();
-	                int screenheight = resolution.getScaledHeight();
-	                FontRenderer fontR = FMLClientHandler.instance().getClient().fontRendererObj;
-	                
-	                if (ConfigHandler.STRING_POSITION.equals("default")) fontR.drawString(buffer, screenwidth / 2 - fontR.getStringWidth(buffer) / 2, 10, 0xffffff);
-	                if (ConfigHandler.STRING_POSITION.equals("topright")) fontR.drawString(buffer, screenwidth - 10 - fontR.getStringWidth(buffer), 10, 0xffffff);
-	                if (ConfigHandler.STRING_POSITION.equals("topleft")) fontR.drawString(buffer, 10, 10, 0xffffff);
-	                if (ConfigHandler.STRING_POSITION.equals("bottomright")) fontR.drawString(buffer, screenwidth - 10 - fontR.getStringWidth(buffer), screenheight - 20, 0xffffff);
-	                if (ConfigHandler.STRING_POSITION.equals("bottomleft")) fontR.drawString(buffer, 10, screenheight - 20, 0xffffff);
-	                if (ConfigHandler.STRING_POSITION.equals("cursor")) fontR.drawString(buffer, screenwidth / 2 - fontR.getStringWidth(buffer) / 2, screenheight / 2 - 15, 0xffffff);
+					EntityMob mob = (EntityMob) entity;
+					
+					if (mob.hasCapability(CapabilityEnemyLevel.ENEMY_LEVEL_CAP, null))
+					{
+						IEnemyLevel enemyLevel = mob.getCapability(CapabilityEnemyLevel.ENEMY_LEVEL_CAP, null);
+						String buffer = "Default";
+						if (enemyLevel.getEnemyLevel() == 1) buffer = TextFormatting.DARK_GRAY + "Weakened";
+						if (enemyLevel.getEnemyLevel() == 2) buffer = TextFormatting.WHITE + "Normal";
+						if (enemyLevel.getEnemyLevel() == 3) buffer = TextFormatting.DARK_GREEN + "Hardened";
+						if (enemyLevel.getEnemyLevel() == 4) buffer = TextFormatting.AQUA + "Superior";
+						if (enemyLevel.getEnemyLevel() == 5) buffer = TextFormatting.DARK_PURPLE + "Elite";
+						if (enemyLevel.getEnemyLevel() == 6) buffer = TextFormatting.GOLD + "Legendary";
+						ScaledResolution resolution = new ScaledResolution(FMLClientHandler.instance().getClient());
+		                int screenwidth = resolution.getScaledWidth();
+		                int screenheight = resolution.getScaledHeight();
+		                FontRenderer fontR = FMLClientHandler.instance().getClient().fontRendererObj;
+		                
+		                if (ConfigHandler.STRING_POSITION.equals("default")) fontR.drawString(buffer, screenwidth / 2 - fontR.getStringWidth(buffer) / 2, 10, 0xffffff);
+		                if (ConfigHandler.STRING_POSITION.equals("topright")) fontR.drawString(buffer, screenwidth - 10 - fontR.getStringWidth(buffer), 10, 0xffffff);
+		                if (ConfigHandler.STRING_POSITION.equals("topleft")) fontR.drawString(buffer, 10, 10, 0xffffff);
+		                if (ConfigHandler.STRING_POSITION.equals("bottomright")) fontR.drawString(buffer, screenwidth - 10 - fontR.getStringWidth(buffer), screenheight - 20, 0xffffff);
+		                if (ConfigHandler.STRING_POSITION.equals("bottomleft")) fontR.drawString(buffer, 10, screenheight - 20, 0xffffff);
+		                if (ConfigHandler.STRING_POSITION.equals("cursor")) fontR.drawString(buffer, screenwidth / 2 - fontR.getStringWidth(buffer) / 2, screenheight / 2 - 15, 0xffffff);
+					}
 				}
 			}
 		}

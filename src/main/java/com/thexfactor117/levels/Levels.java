@@ -13,10 +13,12 @@ import com.thexfactor117.levels.network.PacketEnemyLevel;
 import com.thexfactor117.levels.network.PacketRarity;
 import com.thexfactor117.levels.proxies.CommonProxy;
 
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
@@ -37,6 +39,7 @@ public class Levels
 	public static final Logger LOGGER = LogManager.getLogger("Levels");
 	public static SimpleNetworkWrapper NETWORK;
 	private static File CONFIG_DIR;
+	public static boolean isWailaLoaded;
 	
 	public static File getConfigDir() { return CONFIG_DIR; }
 	
@@ -56,6 +59,8 @@ public class Levels
 		NETWORK.registerMessage(PacketRarity.Handler.class, PacketRarity.class, 0, Side.CLIENT);
 		NETWORK.registerMessage(PacketEnemyLevel.Handler.class, PacketEnemyLevel.class, 1, Side.CLIENT);
 		
+		FMLInterModComms.sendMessage("Waila", "register", "com.thexfactor117.levels.waila.WailaHandler.callbackRegister");
+		
 		Levels.LOGGER.info("Configurations and core events have been loaded...");
 	}
 	
@@ -63,7 +68,11 @@ public class Levels
 	public void init(FMLInitializationEvent event) {}
 	
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {}
+	public void postInit(FMLPostInitializationEvent event) 
+	{
+		isWailaLoaded = Loader.isModLoaded("Waila");
+		if (isWailaLoaded) Levels.LOGGER.info("Waila has been loaded. Opting for Waila display information!");
+	}
 
 	@EventHandler
 	public void onServerLoad(FMLServerStartingEvent event)

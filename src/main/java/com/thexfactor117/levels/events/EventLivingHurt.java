@@ -4,7 +4,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import com.thexfactor117.levels.Levels;
+import com.thexfactor117.levels.capabilities.CapabilityEnemyLevel;
+import com.thexfactor117.levels.capabilities.IEnemyLevel;
 import com.thexfactor117.levels.handlers.ConfigHandler;
 import com.thexfactor117.levels.leveling.Ability;
 import com.thexfactor117.levels.leveling.AbilityHelper;
@@ -14,6 +15,7 @@ import com.thexfactor117.levels.misc.NBTHelper;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemArmor;
@@ -45,18 +47,7 @@ public class EventLivingHurt
 	@SuppressWarnings({ "incomplete-switch", "rawtypes" })
 	@SubscribeEvent
 	public void hitEntity(LivingHurtEvent event)
-	{
-		/*
-		 * ATTRIBUTE TESTING
-		 */
-		if (event.getSource().getSourceOfDamage() instanceof EntityPlayer)
-		{
-			Levels.LOGGER.info("Entity health: " + event.getEntityLiving().getHealth() + "/" + event.getEntityLiving().getMaxHealth());
-		}
-		/*
-		 * ATTRIBUTE TESTING
-		 */
-		
+	{		
 		/*
 		 * 
 		 * WEAPONS
@@ -716,43 +707,51 @@ public class EventLivingHurt
 		/*
 		 * Entity Leveling
 		 */
-		/*if (event.getEntityLiving() instanceof EntityPlayer && event.getSource().getSourceOfDamage() instanceof EntityMob)
+		if (ConfigHandler.ENEMY_ABILITIES)
 		{
-			Random rand = event.getEntityLiving().worldObj.rand;
-			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-			EntityMob mob = (EntityMob) event.getSource().getSourceOfDamage();
-			
-			if (!mob.worldObj.isRemote)
+			if (event.getEntityLiving() instanceof EntityPlayer && event.getSource().getSourceOfDamage() instanceof EntityMob)
 			{
-				NBTTagCompound nbt = mob.getEntityData();
-				mob.readFromNBT(nbt);
-				EnemyLevel enemyLevel = EnemyLevel.getEnemyLevel(nbt);
-				int level = enemyLevel.ordinal();
-
-				if (level == 5)
-				{
-					int var = rand.nextInt(10);
-					int var1 = rand.nextInt(3);
-					if (var == 0)
-					{
-						if (var1 == 0) player.setFire(4);
-						if (var1 == 1) player.addPotionEffect(new PotionEffect(Potion.getPotionById(2), 20*5, 20));
-						if (var1 == 2) player.addPotionEffect(new PotionEffect(Potion.getPotionById(19), 20*15, 0));
-					}
-				}
+				Random rand = event.getEntityLiving().worldObj.rand;
+				EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+				EntityMob mob = (EntityMob) event.getSource().getSourceOfDamage();
 				
-				if (level == 6)
-				{
-					int var = rand.nextInt(5);
-					int var1 = rand.nextInt(3);
-					if (var == 0)
+				if (!mob.worldObj.isRemote)
+				{	
+					IEnemyLevel enemyLevel = mob.getCapability(CapabilityEnemyLevel.ENEMY_LEVEL_CAP, null);
+
+					if (enemyLevel != null)
 					{
-						if (var1 == 0) player.setFire(5);
-						if (var1 == 1) player.addPotionEffect(new PotionEffect(Potion.getPotionById(2), 20*7, 20));
-						if (var1 == 2) player.addPotionEffect(new PotionEffect(Potion.getPotionById(19), 20*20, 0));
+						int level = enemyLevel.getEnemyLevel();
+						
+						if (level > 0)
+						{
+							if (level == 5)
+							{
+								int var = rand.nextInt(10);
+								int var1 = rand.nextInt(3);
+								if (var == 0)
+								{
+									if (var1 == 0) player.setFire(4);
+									if (var1 == 1) player.addPotionEffect(new PotionEffect(Potion.getPotionById(2), 20*5, 20));
+									if (var1 == 2) player.addPotionEffect(new PotionEffect(Potion.getPotionById(19), 20*15, 0));
+								}
+							}
+							
+							if (level == 6)
+							{
+								int var = rand.nextInt(5);
+								int var1 = rand.nextInt(3);
+								if (var == 0)
+								{
+									if (var1 == 0) player.setFire(5);
+									if (var1 == 1) player.addPotionEffect(new PotionEffect(Potion.getPotionById(2), 20*7, 20));
+									if (var1 == 2) player.addPotionEffect(new PotionEffect(Potion.getPotionById(19), 20*20, 0));
+								}
+							}
+						}
 					}
 				}
 			}
-		}*/
+		}
 	}
 }

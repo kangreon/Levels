@@ -41,6 +41,12 @@ minecraft {
     replace "@MVERSION@", version
 }
 
+dependencies {
+	compile files (
+	"libs/Waila-1.7.0-B3_1.9.4-dev.jar"
+	)
+}
+
 processResources
 {
     // this will ensure that this task is redone when the versions change.

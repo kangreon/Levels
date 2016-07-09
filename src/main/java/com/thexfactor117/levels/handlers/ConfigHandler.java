@@ -22,6 +22,7 @@ public class ConfigHandler
 	
 	// enemy leveling
 	public static String STRING_POSITION;
+	public static boolean ENEMY_ABILITIES;
 
 	// experience
 	public static int MAX_LEVEL_CAP;
@@ -91,6 +92,7 @@ public class ConfigHandler
 		category = "Enemy Leveling";
 		CONFIG.addCustomCategoryComment(category, "Enemy leveling settings");
 		STRING_POSITION = CONFIG.getString("stringPosition", category, "default", "Sets the enemy rarity positioning on the screen. Use default, topright, topleft, bottomleft, bottomright, or cursor.");
+		ENEMY_ABILITIES = CONFIG.getBoolean("enemyAbilities", category, true, "Enable/disable higher rarity enemies to have abilities, such as fire, stun, or poison.");
 		
 		// experience
 		category = "Experience";
