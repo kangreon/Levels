@@ -7,7 +7,6 @@ import com.thexfactor117.levels.events.EventLivingDrops;
 import com.thexfactor117.levels.events.EventLivingHurt;
 import com.thexfactor117.levels.events.EventLivingUpdate;
 import com.thexfactor117.levels.events.EventPlayerTracking;
-import com.thexfactor117.levels.events.EventRenderOverlay;
 import com.thexfactor117.levels.handlers.ConfigHandler;
 
 import net.minecraftforge.common.MinecraftForge;
@@ -35,7 +34,6 @@ public class ModEvents
 		if (ConfigHandler.ENEMY_LEVELING)
 		{
 			MinecraftForge.EVENT_BUS.register(new EventPlayerTracking());
-			MinecraftForge.EVENT_BUS.register(new EventRenderOverlay());
 		}
 		
 		if (ConfigHandler.MOB_DROPS)

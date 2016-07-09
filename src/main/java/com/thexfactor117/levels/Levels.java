@@ -53,6 +53,7 @@ public class Levels
 		ConfigHandler.init(new File(CONFIG_DIR.getPath(), Reference.MODID + ".cfg"));
 		
 		ModEvents.registerEvents();
+		PROXY.preInit();
 		CapabilityEnemyLevel.register();
 		
 		NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel("levels");

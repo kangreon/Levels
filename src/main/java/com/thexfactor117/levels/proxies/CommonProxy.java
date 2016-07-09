@@ -7,5 +7,6 @@ package com.thexfactor117.levels.proxies;
  */
 public class CommonProxy 
 {
+	public void preInit() {}
 	public void postInit() {}
 }
