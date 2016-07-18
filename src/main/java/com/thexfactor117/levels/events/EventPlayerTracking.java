@@ -41,14 +41,14 @@ public class EventPlayerTracking
 						
 						if (enemyLevel.getEnemyLevel() > 0)
 						{	
-							Levels.NETWORK.sendToAll(new PacketEnemyLevel(enemyLevel.getEnemyLevel(), mob.getEntityId()));
+							Levels.network.sendToAll(new PacketEnemyLevel(enemyLevel.getEnemyLevel(), mob.getEntityId()));
 							setAttributeModifiers(mob, level);
 						}
 						else
 						{
 							int newLevel = EnemyLevel.getRandomLevel(event.getEntity().worldObj.rand).ordinal();
 							enemyLevel.setEnemyLevel(newLevel);
-							Levels.NETWORK.sendToAll(new PacketEnemyLevel(enemyLevel.getEnemyLevel(), mob.getEntityId()));
+							Levels.network.sendToAll(new PacketEnemyLevel(enemyLevel.getEnemyLevel(), mob.getEntityId()));
 							setAttributeModifiers(mob, newLevel);
 						}
 					}

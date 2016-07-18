@@ -35,30 +35,30 @@ import net.minecraftforge.fml.relauncher.Side;
 public class Levels 
 {
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY, serverSide = Reference.COMMON_PROXY)
-	public static CommonProxy PROXY;
+	public static CommonProxy proxy;
 	public static final Logger LOGGER = LogManager.getLogger("Levels");
-	public static SimpleNetworkWrapper NETWORK;
-	private static File CONFIG_DIR;
+	public static SimpleNetworkWrapper network;
+	private static File config_dir;
 	public static boolean isWailaLoaded;
 	
-	public static File getConfigDir() { return CONFIG_DIR; }
+	public static File getConfigDir() { return config_dir; }
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		Levels.LOGGER.info("Beginning initialization phases...");
 		
-		CONFIG_DIR = new File(event.getModConfigurationDirectory() + "/" + Reference.MODID);
-		CONFIG_DIR.mkdirs();
-		ConfigHandler.init(new File(CONFIG_DIR.getPath(), Reference.MODID + ".cfg"));
+		config_dir = new File(event.getModConfigurationDirectory() + "/" + Reference.MODID);
+		config_dir.mkdirs();
+		ConfigHandler.init(new File(config_dir.getPath(), Reference.MODID + ".cfg"));
 		
 		ModEvents.registerEvents();
-		PROXY.preInit();
+		proxy.preInit();
 		CapabilityEnemyLevel.register();
 		
-		NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel("levels");
-		NETWORK.registerMessage(PacketRarity.Handler.class, PacketRarity.class, 0, Side.CLIENT);
-		NETWORK.registerMessage(PacketEnemyLevel.Handler.class, PacketEnemyLevel.class, 1, Side.CLIENT);
+		network = NetworkRegistry.INSTANCE.newSimpleChannel("levels");
+		network.registerMessage(PacketRarity.Handler.class, PacketRarity.class, 0, Side.CLIENT);
+		network.registerMessage(PacketEnemyLevel.Handler.class, PacketEnemyLevel.class, 1, Side.CLIENT);
 		
 		FMLInterModComms.sendMessage("Waila", "register", "com.thexfactor117.levels.waila.WailaHandler.callbackRegister");
 		
