@@ -30,6 +30,11 @@ import net.minecraftforge.fml.relauncher.Side;
  * 
  * @author TheXFactor117
  *
+ * TODO:
+ * + Add a tiered ability system (e.g. Fire II)
+ * * Implement a new leveling algorithm
+ * * Re-work enemy leveling bonuses/abilities.
+ * 
  */
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION, updateJSON = Reference.UPDATE_URL)
 public class Levels 

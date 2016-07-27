@@ -17,44 +17,6 @@ import net.minecraft.util.text.TextFormatting;
  */
 public class Experience 
 {
-	private static final String LEVEL_KEY = "LEVEL";
-	private static final String EXPERIENCE_KEY = "EXPERIENCE";
-	
-	/**
-	 * Levels the stack up according to its experience values; also used to call the randomized ability methods.
-	 * @param player
-	 * @param nbt
-	 * @param abilityHelper
-	 * @param level
-	 * @param experience
-	 * @param rand
-	 * @return
-	 */
-	/*public static int getNextLevel(EntityPlayer player, NBTTagCompound nbt, AbilityHelper abilityHelper, int level, int experience, Random rand)
-	{
-		while (level < ConfigHandler.maxLevelCap && experience >= Experience.getMaxLevelExp(level))
-		{
-			level++;
-			player.addChatMessage(new TextComponentString(TextFormatting.GRAY + "Your weapon has leveled up to level " + level + "!"));
-			
-			int select1 = ConfigHandler.maxLevelCap / 6;
-			int select2 = ConfigHandler.maxLevelCap / 3;
-			int select3 = ConfigHandler.maxLevelCap / 2;
-			int select4 = (int) (ConfigHandler.maxLevelCap / 1.5);
-			int select5 = (int) (ConfigHandler.maxLevelCap / 1.2);
-			int select6 = ConfigHandler.maxLevelCap;
-			
-			if (level == select1) AbilitySelection.getRandomizedAbilities(player, nbt, level, abilityHelper, rand);
-			if (level == select2) AbilitySelection.getRandomizedAbilities(player, nbt, level, abilityHelper, rand);
-			if (level == select3) AbilitySelection.getRandomizedAbilities(player, nbt, level, abilityHelper, rand);
-			if (level == select4) AbilitySelection.getRandomizedAbilities(player, nbt, level, abilityHelper, rand);
-			if (level == select5) AbilitySelection.getRandomizedAbilities(player, nbt, level, abilityHelper, rand);
-			if (level == select6) AbilitySelection.getRandomizedAbilities(player, nbt, level, abilityHelper, rand);
-		}
-		
-		return level;
-	}*/
-	
 	public static int getNextLevel(EntityPlayer player, NBTTagCompound nbt, AbilityHelper abilityHelper, int currentLevel, int experience, Random rand)
 	{
 		int newLevel = currentLevel;
@@ -64,17 +26,15 @@ public class Experience
 			newLevel = currentLevel + 1;
 			currentLevel++;
 			AbilitySelection.getRandomizedAbilities(player, nbt, newLevel, abilityHelper, rand);
-			player.addChatMessage(new TextComponentString(TextFormatting.GRAY + "Your weapon has leveled up to level " + newLevel + "!"));
+			player.addChatMessage(new TextComponentString(TextFormatting.GRAY + "Your weapon has leveled up to level " + TextFormatting.GOLD + "" + newLevel + TextFormatting.GRAY + "!"));
 		}
 		
 		return newLevel;
 	}
 	
-	
-	
 	public static int getLevel(NBTTagCompound nbt)
 	{
-		return nbt != null ? Math.max(nbt.getInteger(LEVEL_KEY), 1) : 1;
+		return nbt != null ? Math.max(nbt.getInteger("LEVEL"), 1) : 1;
 	}
 	
 	public static void setLevel(NBTTagCompound nbt, int level)
@@ -83,18 +43,18 @@ public class Experience
 		{
 			if (level > 1)
 			{
-				nbt.setInteger(LEVEL_KEY, level);
+				nbt.setInteger("LEVEL", level);
 			}
 			else
 			{
-				nbt.removeTag(LEVEL_KEY);
+				nbt.removeTag("LEVEL");
 			}
 		}
 	}
 	
 	public static int getExperience(NBTTagCompound nbt)
 	{
-		return nbt != null ? nbt.getInteger(EXPERIENCE_KEY) : 0;
+		return nbt != null ? nbt.getInteger("EXPERIENCE") : 0;
 	}
 	
 	public static void setExperience(NBTTagCompound nbt, int experience)
@@ -103,19 +63,18 @@ public class Experience
 		{
 			if (experience > 0)
 			{
-				nbt.setInteger(EXPERIENCE_KEY, experience);
+				nbt.setInteger("EXPERIENCE", experience);
 			}
 			else
 			{
-				nbt.removeTag(EXPERIENCE_KEY);
+				nbt.removeTag("EXPERIENCE");
 			}
 		}
 	}
 	
 	public static int getMaxLevelExp(int level)
 	{
-		int maxXP = (int) Math.pow(level, 3D) * 20;
-		if (level == 1) maxXP *= 2;
+		int maxXP = (int) Math.pow(level, 2.2D) * 20;
 		return maxXP;
 	}
 }
